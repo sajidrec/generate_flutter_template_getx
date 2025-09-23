@@ -82,5 +82,15 @@ Future<void> main() async {
   file.createSync(recursive: true);
   file.writeAsStringSync(HomePageContent.content);
 
-  print("Clean Architecture template generated.");
+  // finally delete unnecessary template generation files
+
+  final dir = Directory("contents");
+  dir.deleteSync(recursive: true);
+
+  file = File("generate_flutter_template.dart");
+  file.deleteSync();
+
+  print(
+    "Clean Architecture template generated and all the unnecessary files removed.",
+  );
 }
